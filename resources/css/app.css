@@ -1,0 +1,172 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ========================================================
+   THEME DEFINITIONS: 4 DYNAMIC THEMES
+   ======================================================== */
+
+/* 1. Ansa Default (Berdasarkan Warna Logo: Deep Navy & Teal / Emerald) */
+:root,
+[data-theme="ansa-default"] {
+    --bg-page: #070d18;
+    --bg-surface: #0d192e;
+    --bg-surface-elevated: #132442;
+    --bg-surface-card: #0f1c34;
+    --border-subtle: #1c3258;
+    --border-highlight: #284d82;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --brand-primary: #0d9488;
+    --brand-primary-light: #14b8a6;
+    --brand-primary-glow: rgba(20, 184, 166, 0.25);
+    --brand-accent: #10b981;
+    --brand-accent-glow: rgba(16, 185, 129, 0.25);
+    --badge-bg: rgba(13, 148, 136, 0.15);
+    --badge-text: #2dd4bf;
+    --badge-border: rgba(45, 212, 191, 0.3);
+    --nav-blur-bg: rgba(7, 13, 24, 0.85);
+}
+
+/* 2. Cyber Indigo (Neon Indigo & Violet Futuristic) */
+[data-theme="cyber-indigo"] {
+    --bg-page: #09090f;
+    --bg-surface: #12121d;
+    --bg-surface-elevated: #1a1a2b;
+    --bg-surface-card: #151524;
+    --border-subtle: #27273f;
+    --border-highlight: #3b3b61;
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --brand-primary: #6366f1;
+    --brand-primary-light: #818cf8;
+    --brand-primary-glow: rgba(99, 102, 241, 0.25);
+    --brand-accent: #a855f7;
+    --brand-accent-glow: rgba(168, 85, 247, 0.25);
+    --badge-bg: rgba(99, 102, 241, 0.15);
+    --badge-text: #a5b4fc;
+    --badge-border: rgba(129, 140, 248, 0.3);
+    --nav-blur-bg: rgba(9, 9, 15, 0.85);
+}
+
+/* 3. Emerald Forest (Deep Forest Dark & Pure Emerald) */
+[data-theme="emerald-forest"] {
+    --bg-page: #04130f;
+    --bg-surface: #0a211b;
+    --bg-surface-elevated: #10332a;
+    --bg-surface-card: #0d2820;
+    --border-subtle: #174d3f;
+    --border-highlight: #236f5b;
+    --text-primary: #f0fdf4;
+    --text-secondary: #86efac;
+    --text-muted: #4ade80;
+    --brand-primary: #059669;
+    --brand-primary-light: #10b981;
+    --brand-primary-glow: rgba(16, 185, 129, 0.25);
+    --brand-accent: #34d399;
+    --brand-accent-glow: rgba(52, 211, 153, 0.25);
+    --badge-bg: rgba(5, 150, 105, 0.15);
+    --badge-text: #6ee7b7;
+    --badge-border: rgba(52, 211, 153, 0.3);
+    --nav-blur-bg: rgba(4, 19, 15, 0.85);
+}
+
+/* 4. Executive Light (Crisp Clean Business White with Navy & Teal) */
+[data-theme="executive-light"] {
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #f1f5f9;
+    --bg-surface-card: #ffffff;
+    --border-subtle: #e2e8f0;
+    --border-highlight: #cbd5e1;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --brand-primary: #0d9488;
+    --brand-primary-light: #0f766e;
+    --brand-primary-glow: rgba(13, 148, 136, 0.15);
+    --brand-accent: #0284c7;
+    --brand-accent-glow: rgba(2, 132, 199, 0.15);
+    --badge-bg: rgba(13, 148, 136, 0.1);
+    --badge-text: #0f766e;
+    --badge-border: rgba(13, 148, 136, 0.25);
+    --nav-blur-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* Base Body Styles */
+body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-subtle);
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-primary);
+}
+
+/* Glassmorphism Classes */
+.theme-surface {
+    background-color: var(--bg-surface);
+    border-color: var(--border-subtle);
+}
+
+.theme-card {
+    background-color: var(--bg-surface-card);
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-card:hover {
+    border-color: var(--border-highlight);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -4px var(--brand-primary-glow);
+}
+
+.btn-brand-primary {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-light));
+    color: #ffffff;
+    box-shadow: 0 4px 14px var(--brand-primary-glow);
+    transition: all 0.2s ease;
+}
+
+.btn-brand-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px var(--brand-primary-glow);
+    transform: translateY(-1px);
+}
+
+.btn-brand-secondary {
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.btn-brand-secondary:hover {
+    border-color: var(--brand-primary);
+    color: var(--brand-primary-light);
+}
