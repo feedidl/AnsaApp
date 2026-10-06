@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ContractController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EstimatorController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
@@ -49,4 +50,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // Generator Kontrak PDF (tanpa penyimpanan database)
     Route::get('contracts/create', [ContractController::class, 'create'])->name('contracts.create');
     Route::post('contracts/generate', [ContractController::class, 'generate'])->name('contracts.generate');
+
+    // Profil Admin & Ubah Password
+    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 });

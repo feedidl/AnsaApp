@@ -145,6 +145,15 @@
                     <span>Pengaturan Website</span>
                 </a>
 
+                <a href="{{ route('admin.profile.edit') }}" 
+                   @click="sidebarOpen = false"
+                   class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl transition-colors {{ request()->routeIs('admin.profile.*') ? 'bg-teal-500/10 text-teal-400 border border-teal-500/30' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    <span>Profil & Password</span>
+                </a>
+
                 <p class="px-3.5 pt-4 pb-1 text-[10px] uppercase tracking-wider text-slate-500 font-bold">Sales Tools</p>
 
                 <a href="{{ route('admin.estimator.index') }}" 
@@ -169,6 +178,13 @@
 
         <!-- User / Bottom Logout Actions -->
         <div class="p-4 border-t border-slate-800 space-y-2">
+            <a href="{{ route('admin.profile.edit') }}" class="flex items-center gap-2 px-3 py-2 text-xs text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors {{ request()->routeIs('admin.profile.*') ? 'bg-teal-500/10 text-teal-400 border border-teal-500/30' : '' }}">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+                <span>Edit Profil & Password</span>
+            </a>
+
             <a href="{{ route('home') }}" target="_blank" class="flex items-center gap-2 px-3 py-2 text-xs text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -195,9 +211,16 @@
         <div class="hidden lg:flex h-16 px-6 bg-slate-900/60 backdrop-blur-md border-b border-slate-800 items-center justify-between sticky top-0 z-30">
             <h1 class="text-base font-bold text-white">@yield('page_title', 'Dashboard')</h1>
             <div class="flex items-center gap-3">
-                <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-teal-400 font-mono">
-                    {{ Auth::user()->email ?? 'admin@ansaapp.com' }}
-                </span>
+                <a href="{{ route('admin.profile.edit') }}" 
+                   title="Edit Profil & Password Admin"
+                   class="flex items-center gap-2 text-xs px-3 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-teal-400 hover:text-teal-300 font-mono transition-all group">
+                    <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                    <span class="font-sans font-semibold text-white">{{ Auth::user()->name ?? 'Admin' }}</span>
+                    <span class="text-slate-400 text-[11px]">({{ Auth::user()->email ?? 'admin@ansaapp.com' }})</span>
+                    <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-teal-300 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                    </svg>
+                </a>
             </div>
         </div>
 
